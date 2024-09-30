@@ -171,10 +171,10 @@ class _UserCacheRoot(FixedPathSingleton):
     def init_value(cls) -> Path:
         return Path(
             pre_arg_parser("--xdg-cache-home", "")
+            or PikaurConfig().misc.CachePath.get_str()
             or os.environ.get(
                 "XDG_CACHE_HOME",
-            )
-            or Path(PikaurConfig().misc.CachePath.get_str()),
+            ),
         )
 
 
